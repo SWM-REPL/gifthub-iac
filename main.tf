@@ -10,11 +10,13 @@ resource "ncloud_vpc" "develop_vpc" {
 
 // NACL - PUBLIC
 resource "ncloud_network_acl" "develop_public_acl" {
+  name   = "${var.zone_name}-${var.terraform_name}-${var.develop_env_name}-net-public"
   vpc_no = ncloud_vpc.develop_vpc.id
 }
 
-// NACL - PUBLIC
+// NACL - PRIVATE
 resource "ncloud_network_acl" "develop_private_acl" {
+  name   = "${var.zone_name}-${var.terraform_name}-${var.develop_env_name}-net-private"
   vpc_no = ncloud_vpc.develop_vpc.id
 }
 
