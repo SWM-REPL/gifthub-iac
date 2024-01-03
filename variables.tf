@@ -28,5 +28,5 @@ variable "zones" {
 }
 
 variable "terraform_name" {
-  default = "sportspie"
+  default = "gifthub"
 }
