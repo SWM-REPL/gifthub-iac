@@ -1,14 +1,3 @@
-// Server - key (develop)
-resource "ncloud_login_key" "develop_key" {
-  key_name = "${var.terraform_name}-${var.develop_env_name}-key"
-}
-
-// Server - .pem file (develop)
-resource "local_file" "develop_pem" {
-  filename = "${ncloud_login_key.develop_key.key_name}.pem"
-  content  = ncloud_login_key.develop_key.private_key
-}
-
 // Server - bastion-acg (develop)
 resource "ncloud_access_control_group" "develop_bastion_acg" {
   name   = "${var.zone_name}-${var.terraform_name}-${var.develop_env_name}-bastion-acg"
