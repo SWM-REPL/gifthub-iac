@@ -8,5 +8,6 @@
 /terraform.tfstate.*
 /terraform.tfvars
 
+### Server Secret ###
 *.pem
-*-root_password.txt
+*.txt
