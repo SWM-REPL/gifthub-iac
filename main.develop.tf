@@ -138,7 +138,3 @@ resource "ncloud_public_ip" "develop_bastion_ip" {
   server_instance_no = ncloud_server.develop_bastion_server.id
   description        = "for ${ncloud_server.develop_bastion_server.name} public ip"
 }
-
-/*
-** 운영 환경
-*/
