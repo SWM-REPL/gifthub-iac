@@ -41,7 +41,7 @@ resource "ncloud_access_control_group_rule" "develop_bastion_acg" {
 
 // Server - bastion's nic
 resource "ncloud_network_interface" "develop_bastion_nic" {
-  name                  = "${var.terraform_name}-nic"
+  name                  = "${var.terraform_name}-bastion-nic"
   subnet_no             = ncloud_subnet.develop_net_subnet.id
   access_control_groups = [ncloud_access_control_group.develop_bastion_acg.id]
 }
