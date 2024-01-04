@@ -134,6 +134,7 @@ resource "local_file" "develop_bastion_root_password_file" {
   content  = "${ncloud_server.develop_bastion_server.name} => ${data.ncloud_root_password.develop_bastion_root_password.root_password}"
 }
 
+# bastion's public ip
 resource "ncloud_public_ip" "develop_bastion_ip" {
   server_instance_no = ncloud_server.develop_bastion_server.id
   description        = "for ${ncloud_server.develop_bastion_server.name} public ip"
