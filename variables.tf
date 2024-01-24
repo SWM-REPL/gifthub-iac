@@ -46,3 +46,15 @@ variable "production_env_name" {
 variable "vpc_develop_cidr" {
   default = "10.84.0.0/16"
 }
+
+variable "db_user_name" {
+  default = "root"
+}
+
+variable "db_password" {
+  default = "abc123"
+}
+
+variable "db_database_name" {
+  default = "gifthub"
+}
