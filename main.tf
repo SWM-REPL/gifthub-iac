@@ -7,8 +7,9 @@ provider "aws" {
 
 # 운영 환경 리소스 생성
 module "prod" {
-  source         = "./environments/prod"
-  vpc_cidr_block = var.prod_vpc_cidr_block
-  region_name    = var.region_name
-  terraform_name = var.terraform_name
+  source          = "./environments/prod"
+  vpc_cidr_block  = var.prod_vpc_cidr_block
+  region_name     = var.region_name
+  terraform_name  = var.terraform_name
+  host_cidr_block = var.host_cidr_block
 }

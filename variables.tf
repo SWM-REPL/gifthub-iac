@@ -29,3 +29,11 @@ variable "prod_vpc_cidr_block" {
   type        = string
 }
 
+variable "key_name" {
+  description = "EC2 인스턴스에 사용할 키 페어의 이름"
+  type        = string
+}
+
+variable "host_cidr_block" {
+  description = "Bastion 호스트에 연결을 허용할 CIDR 블록"
+}
