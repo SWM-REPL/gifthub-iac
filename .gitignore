@@ -11,3 +11,4 @@
 ### Server Secret ###
 *.pem
 *.txt
+*.ovpn
