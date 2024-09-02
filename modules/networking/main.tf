@@ -5,7 +5,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = var.vpc_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-vpc"
   }
 }
 
@@ -14,100 +14,100 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = var.igw_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-igw"
   }
 }
 
 # net 서브넷 리소스
 resource "aws_subnet" "net_subnet1" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.net_subnet1_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 0)
   availability_zone = var.availability_zone1
 
   tags = {
-    Name = var.net_subnet1_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-net/az1"
   }
 }
 
 resource "aws_subnet" "net_subnet2" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.net_subnet2_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 1)
   availability_zone = var.availability_zone2
 
   tags = {
-    Name = var.net_subnet2_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-net/az2"
   }
 }
 
 resource "aws_subnet" "net_subnet3" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.net_subnet3_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 2)
   availability_zone = var.availability_zone3
 
   tags = {
-    Name = var.net_subnet3_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-net/az3"
   }
 }
 
 # app 서브넷 리소스
 resource "aws_subnet" "app_subnet1" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.app_subnet1_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 3)
   availability_zone = var.availability_zone1
 
   tags = {
-    Name = var.app_subnet1_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-app/az1"
   }
 }
 
 resource "aws_subnet" "app_subnet2" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.app_subnet2_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 4)
   availability_zone = var.availability_zone2
 
   tags = {
-    Name = var.app_subnet2_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-app/az2"
   }
 }
 
 resource "aws_subnet" "app_subnet3" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.app_subnet3_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 5)
   availability_zone = var.availability_zone3
 
   tags = {
-    Name = var.app_subnet3_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-app/az3"
   }
 }
 
 # data 서브넷 리소스
 resource "aws_subnet" "data_subnet1" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.data_subnet1_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 6)
   availability_zone = var.availability_zone1
 
   tags = {
-    Name = var.data_subnet1_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-data/az1"
   }
 }
 
 resource "aws_subnet" "data_subnet2" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.data_subnet2_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 7)
   availability_zone = var.availability_zone2
 
   tags = {
-    Name = var.data_subnet2_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-data/az2"
   }
 }
 
 resource "aws_subnet" "data_subnet3" {
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.data_subnet3_cidr_block
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 8, 8)
   availability_zone = var.availability_zone3
 
   tags = {
-    Name = var.data_subnet3_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-data/az3"
   }
 }
 
@@ -122,7 +122,7 @@ resource "aws_nat_gateway" "ngw" {
   subnet_id     = aws_subnet.net_subnet1.id
 
   tags = {
-    Name = var.ngw_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-ngw"
   }
 }
 
@@ -136,7 +136,7 @@ resource "aws_route_table" "net_route_table" {
   }
 
   tags = {
-    Name = var.net_route_table_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-net-rtb"
   }
 
   depends_on = [
@@ -164,7 +164,7 @@ resource "aws_route_table" "app_route_table" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = var.app_route_table_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-app-rtb"
   }
 }
 
@@ -194,7 +194,7 @@ resource "aws_route_table" "data_route_table" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = var.data_route_table_name
+    Name = "${var.region_name}-${var.terraform_name}-${var.env_name}-data-rtb"
   }
 }
 
