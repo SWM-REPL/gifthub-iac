@@ -5,3 +5,20 @@ module "networking" {
   terraform_name = var.terraform_name
   env_name       = var.env_name
 }
+
+module "keypair" {
+  source         = "../../modules/keypair"
+  terraform_name = var.terraform_name
+}
+
+module "bastion_az1" {
+  source              = "../../modules/bastion"
+  region_name         = var.region_name
+  terraform_name      = var.terraform_name
+  env_name            = var.env_name
+  allowed_cidr_blocks = [var.host_cidr_block]
+  vpc_id              = module.networking.vpc_id
+  subnet_id           = module.networking.net_subnet1_id
+  availability_zone   = "az1"
+  key_name            = module.keypair.key_name
+}

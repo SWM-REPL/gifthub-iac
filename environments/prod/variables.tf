@@ -19,3 +19,8 @@ variable "env_name" {
   type        = string
   default     = "prod"
 }
+
+variable "host_cidr_block" {
+  description = "Bastion 호스트에 연결을 허용할 CIDR 블록"
+  type        = string
+}

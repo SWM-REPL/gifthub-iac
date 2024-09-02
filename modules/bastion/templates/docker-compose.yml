@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  openvpn:
+    image: wheelybird/openvpn-ldap-otp:v1.8
+    container_name: openvpn
+    volumes:
+      - openvpn-data:/etc/openvpn
+    ports:
+      - "1194:1194/udp"
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - OVPN_SERVER_CN=${PUBLIC_IP}
+      - OVPN_NETWORK=172.22.16.0 255.255.240.0
+      - OVPN_ROUTES=172.22.16.0 255.255.240.0, 10.42.0.0 255.255.0.0
+      - OVPN_NAT=true
+      - OVPN_DNS_SERVERS=${PRIVATE_IP}
+      - USE_CLIENT_CERTIFICATE=true
+    restart: unless-stopped
+
+volumes:
+  openvpn-data:
