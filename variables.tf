@@ -37,3 +37,13 @@ variable "key_name" {
 variable "host_cidr_block" {
   description = "Bastion 호스트에 연결을 허용할 CIDR 블록"
 }
+
+variable "db_username" {
+  description = "RDS 데이터베이스 사용자 이름"
+  type        = string
+}
+
+variable "db_password" {
+  description = "RDS 데이터베이스 사용자 비밀번호"
+  type        = string
+}

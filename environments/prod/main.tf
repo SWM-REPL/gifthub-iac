@@ -22,3 +22,14 @@ module "bastion_az1" {
   availability_zone   = "az1"
   key_name            = module.keypair.key_name
 }
+
+module "rds" {
+  source         = "../../modules/database"
+  region_name    = var.region_name
+  terraform_name = var.terraform_name
+  env_name       = var.env_name
+  vpc_id         = module.networking.vpc_id
+  subnet_ids     = [module.networking.data_subnet1_id, module.networking.data_subnet2_id, module.networking.data_subnet3_id]
+  db_username    = var.db_username
+  db_password    = var.db_password
+}

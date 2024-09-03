@@ -12,4 +12,6 @@ module "prod" {
   region_name     = var.region_name
   terraform_name  = var.terraform_name
   host_cidr_block = var.host_cidr_block
+  db_username     = var.db_username
+  db_password     = var.db_password
 }
