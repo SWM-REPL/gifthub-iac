@@ -51,9 +51,10 @@ resource "aws_security_group" "db_sg" {
   vpc_id = var.vpc_id
 
   ingress {
-    from_port = 3306 # MySQL/Aurora default port
-    to_port   = 3306
-    protocol  = "tcp"
+    from_port   = 3306 # MySQL/Aurora default port
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [var.net_subnet1_cidr_block]
   }
 
   egress {
