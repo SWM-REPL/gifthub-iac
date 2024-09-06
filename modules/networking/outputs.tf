@@ -37,3 +37,15 @@ output "data_subnet2_id" {
 output "data_subnet3_id" {
   value = aws_subnet.data_subnet3.id
 }
+
+output "net_subnet1_cidr_block" {
+  value = aws_subnet.net_subnet1.cidr_block
+}
+
+output "net_subnet2_cidr_block" {
+  value = aws_subnet.net_subnet2.cidr_block
+}
+
+output "net_subnet3_cidr_block" {
+  value = aws_subnet.net_subnet3.cidr_block
+}

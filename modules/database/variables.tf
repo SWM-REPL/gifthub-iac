@@ -70,3 +70,8 @@ variable "db_parameter_group_family" {
   type        = string
   default     = "mysql8.0"
 }
+
+variable "net_subnet1_cidr_block" {
+  description = "네트워크 서브넷1 CIDR"
+  type        = string
+}
