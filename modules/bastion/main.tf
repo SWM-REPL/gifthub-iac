@@ -34,6 +34,13 @@ resource "aws_security_group" "bastion_sg" {
     cidr_blocks = var.allowed_cidr_blocks
   }
 
+  ingress {
+    from_port   = 1194
+    to_port     = 1194
+    protocol    = "udp"
+    cidr_blocks = var.allowed_cidr_blocks
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
